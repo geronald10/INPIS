@@ -60,7 +60,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="label_datapersonil" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="189" max="32767" attributes="0"/>
@@ -146,9 +146,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="TAMBAH PERSONIL"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="TAMBAH PERSONIL"/>
-          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahPersonilActionPerformed"/>
           </Events>
@@ -163,11 +160,31 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                  <Table columnCount="24" rowCount="7">
+                    <Column editable="true" title="NRP" type="java.lang.String"/>
+                    <Column editable="true" title="Nama Personil" type="java.lang.String"/>
+                    <Column editable="true" title="Agama Personil" type="java.lang.String"/>
+                    <Column editable="true" title="Gol. Darah Personil" type="java.lang.String"/>
+                    <Column editable="true" title="Jabatan" type="java.lang.String"/>
+                    <Column editable="true" title="KORPS" type="java.lang.String"/>
+                    <Column editable="true" title="No. ASABRI" type="java.lang.String"/>
+                    <Column editable="true" title="No. BPJS" type="java.lang.String"/>
+                    <Column editable="true" title="No. KTA" type="java.lang.String"/>
+                    <Column editable="true" title="No. NPWP" type="java.lang.String"/>
+                    <Column editable="true" title="No. Telepon" type="java.lang.String"/>
+                    <Column editable="true" title="Pangkat" type="java.lang.String"/>
+                    <Column editable="true" title="Pendidikan Militer" type="java.lang.String"/>
+                    <Column editable="true" title="Pendidikan Pengembang" type="java.lang.String"/>
+                    <Column editable="true" title="Pendidikan Umum" type="java.lang.String"/>
+                    <Column editable="true" title="Status Keluarga" type="java.lang.String"/>
+                    <Column editable="true" title="Status Rumah" type="java.lang.String"/>
+                    <Column editable="true" title="Tamat Jabatan" type="java.lang.String"/>
+                    <Column editable="true" title="Tamat TNI" type="java.lang.String"/>
+                    <Column editable="true" title="Tanggal Lahir Personil" type="java.lang.String"/>
+                    <Column editable="true" title="Tempat Lahir Personil" type="java.lang.String"/>
+                    <Column editable="true" title="TMT Pangkat Pertama" type="java.lang.String"/>
+                    <Column editable="true" title="TMT Pangkat Terakhir" type="java.lang.String"/>
+                    <Column editable="true" title="Alamat Personil" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
