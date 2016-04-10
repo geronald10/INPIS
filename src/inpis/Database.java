@@ -8,6 +8,7 @@ package inpis;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.*;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Database {
                 String url = "jdbc:mysql://localhost/inpis";
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 connection = (com.mysql.jdbc.Connection) DriverManager.getConnection(url, "root", "");
+                //JOptionPane.showMessageDialog(null, "Connection Established");
                 System.out.println("koneksi berhasil");
             }catch(SQLException e){
                 System.out.println("koneksi gagal\n" + e);
@@ -32,7 +34,7 @@ public class Database {
         return connection;
     }
     
-//    public static void main(String[] args) {
-//        getConnection();
-//    }
+    public static void main(String[] args) {
+        getConnection();
+    }
 }
