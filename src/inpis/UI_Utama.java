@@ -5,17 +5,55 @@
  */
 package inpis;
 
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Goronald
  */
+
 public class UI_Utama extends javax.swing.JFrame {
 
     /**
      * Creates new form UI_Utama
      */
+    
+    private DefaultTableModel tabelModel;
+    
     public UI_Utama() {
         initComponents();
+        
+        tabelModel = new DefaultTableModel();
+        tabelPersonil.setModel(tabelModel);
+        tabelModel.addColumn("NRP");
+        tabelModel.addColumn("Nama_Personil");
+        tabelModel.addColumn("Agama");
+        
+        loadTabelPersonil();
+    }
+    
+    private void loadTabelPersonil() {
+        Connection connection = Database.getConnection();
+        String sql = "SELECT * from Personil";
+        try {
+            PreparedStatement statement = (PreparedStatement) connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while(result.next()) {
+                Object[] o = new Object[3];
+                o[0] = result.getString("NRP");
+                o[1] = result.getString("Nama_Personil");
+                o[2] = result.getString("Agama_Personil");
+                
+                tabelModel.addRow(o);
+            }
+        }catch(SQLException e) {
+            System.out.println(e);
+        }
+                
     }
 
     /**
@@ -33,7 +71,7 @@ public class UI_Utama extends javax.swing.JFrame {
         textSearch = new javax.swing.JTextField();
         btnTambahPersonil = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelPersonil = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UI_Utama");
@@ -65,7 +103,7 @@ public class UI_Utama extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelPersonil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -87,7 +125,9 @@ public class UI_Utama extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabelPersonil.setCellSelectionEnabled(true);
+        tabelPersonil.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(tabelPersonil);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,7 +135,7 @@ public class UI_Utama extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -195,8 +235,8 @@ public class UI_Utama extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboFilter;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_datapersonil;
+    private javax.swing.JTable tabelPersonil;
     private javax.swing.JTextField textSearch;
     // End of variables declaration//GEN-END:variables
 }
