@@ -5,40 +5,27 @@
  */
 package InpisView;
 
-import inpis.Database;
-import java.sql.*;
-import javax.swing.*;
-import net.proteanit.sql.DbUtils;
-
 /**
  *
  * @author amazingharry95
  */
+import net.proteanit.sql.DbUtils;
+import InpisController.*;
+import javax.swing.JOptionPane;
+
 public class UI_Utama extends javax.swing.JFrame {
 
     /**
      * Creates new form UI_Utama
      */
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
-    
+    ControlMaster controlUtama = new ControlMaster();
     public UI_Utama() {
         initComponents();
-        conn = Database.getConnection();
         getAllPersonil();
     }
     
     private void getAllPersonil(){
-        try{
-            String sql = "select* from personil";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            Table_Personil.setModel(DbUtils.resultSetToTableModel(rs));
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
+        Table_Personil.setModel(DbUtils.resultSetToTableModel(controlUtama.getPersonilData()));
     }
 
     /**
@@ -54,7 +41,8 @@ public class UI_Utama extends javax.swing.JFrame {
         Table_Personil = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(3000, 1000));
+
+        jScrollPane1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         Table_Personil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,23 +55,24 @@ public class UI_Utama extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Table_Personil.setRowHeight(18);
         jScrollPane1.setViewportView(Table_Personil);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1118, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

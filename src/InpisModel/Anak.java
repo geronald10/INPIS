@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InpisController;
-
-import InpisModel.*;
-import java.sql.ResultSet;
+package InpisModel;
 
 /**
  *
  * @author amazingharry95
  */
-public class ControlMaster {
-    Personil personil = new Personil();
+public class Anak {
     
-    public ResultSet getPersonilData(){
-        return personil.getAllData();
-    }
 }
